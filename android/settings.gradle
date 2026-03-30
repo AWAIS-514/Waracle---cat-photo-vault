@@ -1,0 +1,21 @@
+pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+plugins { id("com.facebook.react.settings") }
+extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
+
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+  repositories {
+    // React Native deps
+    google()
+    mavenCentral()
+
+    // @react-native-async-storage bundles `storage-android` under this local repo.
+    maven {
+      url uri("${settingsDir}/../node_modules/@react-native-async-storage/async-storage/android/local_repo")
+    }
+  }
+}
+
+rootProject.name = 'CatApp'
+include ':app'
+includeBuild('../node_modules/@react-native/gradle-plugin')
