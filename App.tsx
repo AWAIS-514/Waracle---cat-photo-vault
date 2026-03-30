@@ -23,7 +23,8 @@ function App() {
             headerShadowVisible: false,
             headerTintColor: '#101518',
             contentStyle: { backgroundColor: '#f4f7f8' },
-          }}>
+          }}
+        >
           <Stack.Screen
             name="Home"
             component={CatListScreen}
