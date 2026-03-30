@@ -66,7 +66,6 @@ export default function UploadScreen() {
         size: asset.fileSize,
       });
     } catch (err: any) {
-      console.error('[upload] pick image failed', err);
       setErrorMsg(toReadableError(err));
     }
   };
@@ -89,11 +88,6 @@ export default function UploadScreen() {
       await addUploadedCatId(uploaded.id);
       nav.navigate('Home');
     } catch (err: any) {
-      console.error('[upload] uploadCatImage failed', {
-        message: err?.message,
-        status: err?.response?.status,
-        data: err?.response?.data,
-      });
       setErrorMsg(toReadableError(err));
     } finally {
       setUploading(false);

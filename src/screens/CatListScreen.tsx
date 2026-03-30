@@ -8,6 +8,7 @@ import {
   RefreshControl,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
@@ -207,31 +208,30 @@ export default function CatListScreen() {
                 />
                 <Text style={styles.score}>Score: {item.score}</Text>
                 <View style={styles.actionsRow}>
-                  <Pressable
-                    style={[styles.smallBtn, busy && styles.disabledBtn]}
+                  <TouchableOpacity
+                    style={[styles.smallBtn]}
                     onPress={() => onVote(item, 1)}
                     disabled={busy}>
                     <Text style={styles.smallBtnText}>Vote Up</Text>
-                  </Pressable>
-                  <Pressable
-                    style={[styles.smallBtn, busy && styles.disabledBtn]}
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={[styles.smallBtn]}
                     onPress={() => onVote(item, 0)}
                     disabled={busy}>
                     <Text style={styles.smallBtnText}>Vote Down</Text>
-                  </Pressable>
+                  </TouchableOpacity>
                 </View>
-                <Pressable
+                <TouchableOpacity
                   style={[
                     styles.favBtn,
-                    item.favouriteId ? styles.unfav : styles.fav,
-                    busy && styles.disabledBtn,
+                    item.favouriteId ? styles.unfav : styles.fav
                   ]}
                   onPress={() => onToggleFavourite(item)}
                   disabled={busy}>
                   <Text style={styles.favBtnText}>
                     {item.favouriteId ? 'Unfavourite' : 'Favourite'}
                   </Text>
-                </Pressable>
+                </TouchableOpacity>
               </View>
             );
           }}
